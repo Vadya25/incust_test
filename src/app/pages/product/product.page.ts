@@ -53,13 +53,16 @@ export class ProductPage implements OnInit {
 
   }
 
-  calculateValues(type: 'price' | 'qty', value: number | undefined) {
+  calculateValues(type: 'price' | 'qty', $event: any | undefined, value: number | undefined) {
+    
+    let currentValue: number = $event !== undefined ? Number($event.target.value) : value
+    
     if(type === 'price') {
-      this.currentAmount = value !== undefined ? value : this.currentAmount
+      this.currentAmount = currentValue
       this.currentQty = 0
       this.currentQty = Number((this.currentAmount/this.productData.price).toFixed(2))
     } else {
-      this.currentQty = value !== undefined ? value : this.currentQty
+      this.currentQty = currentValue
       this.currentAmount = 0
       this.currentAmount = Number((this.currentQty*this.productData.price).toFixed(2))
     }

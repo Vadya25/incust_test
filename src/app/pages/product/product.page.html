@@ -4,7 +4,7 @@
     <ion-buttons slot="start">
       <ion-back-button 
         text=""
-        defaultHref="/products_list">
+        defaultHref="/">
       </ion-back-button>
     </ion-buttons>
 
@@ -16,7 +16,7 @@
 <ion-content>
 
   <ion-card mode="ios" *ngIf="productData !== undefined" class="product">
-    <ion-img [src]="productData?.image"></ion-img>
+    <img [src]="productData?.image">
     <ion-card-header>
       <ion-card-title>
         {{ productData?.name }}
@@ -27,7 +27,8 @@
     </ion-card-content>
 
     <ion-item lines="none">
-      <ion-button *ngFor="let btn of propertyBtns" (click)="calculateValues(btn.type, btn.value)" class="product-btn">
+      {{ productData?.price }}
+      <ion-button *ngFor="let btn of propertyBtns" (click)="calculateValues(btn.type, undefined, btn.value)" class="product-btn">
         {{ btn.name }}
       </ion-button>
     </ion-item>
@@ -35,12 +36,12 @@
     <ion-item lines="none">
       <ion-item lines="inset">
         <ion-label position="stacked">Amount, $</ion-label>
-        <ion-input (ionInput)="calculateValues('price')" type="number" [(ngModel)]="currentAmount"></ion-input>
+        <ion-input (ionInput)="calculateValues('price', $event, undefined)" type="number" [(ngModel)]="currentAmount"></ion-input>
       </ion-item>
   
       <ion-item lines="inset">
         <ion-label position="stacked">Quantity</ion-label>
-        <ion-input (ionInput)="calculateValues('qty')" type="number" [(ngModel)]="currentQty"></ion-input>
+        <ion-input (ionInput)="calculateValues('qty', $event, undefined)" type="number" [(ngModel)]="currentQty"></ion-input>
       </ion-item>
     </ion-item>
 

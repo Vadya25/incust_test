@@ -22,9 +22,9 @@
   </ion-searchbar>
 
   <ion-virtual-scroll [items]="productsToShow">
-    <ion-item *virtualItem="let product" mode="ios" button="true" (click)="navigateToPage('tabs/product/' + product.sku)">
+    <ion-item *virtualItem="let product" mode="ios" button="true" (click)="navigateToPage('product/' + product.sku)">
       <ion-thumbnail slot="start">
-        <ion-img class="product-image" [src]="product.image"></ion-img>
+        <img class="product-image" [src]="product.image">
       </ion-thumbnail>
       <ion-label>
         <h3> {{ product.name }} </h3>
