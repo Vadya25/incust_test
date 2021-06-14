@@ -59,11 +59,9 @@ export class ProductPage implements OnInit {
     
     if(type === 'price') {
       this.currentAmount = currentValue
-      this.currentQty = 0
       this.currentQty = Number((this.currentAmount/this.productData.price).toFixed(2))
     } else {
       this.currentQty = currentValue
-      this.currentAmount = 0
       this.currentAmount = Number((this.currentQty*this.productData.price).toFixed(2))
     }
   }
