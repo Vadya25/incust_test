@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular'
-import { Product } from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root'
